@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include( '../../layout/head.ejs' ) %>
+  </head>
+  <body>
+    <header>
+      <h1>Book App</h1>
+      <%- include( '../../layout/header.ejs' ) %>
+    </header>
+    <main>
+      <div><h3>Search Results</h3></div>
+        <ul>
+          <% finalBookArray.forEach(book => { %>
+            <article class="book_list">
+              <img class="book_image" src=<%= book.image_url %> >
+              <h2 class="books"><%= book.title %></h2>
+              <h3 class="books"><%= book.author %></h3>
+              <p class="books"><%= book.description %></p>
+              <form  id="create-form" action="/books" method="post">
+                <fieldset>
+                  <input type="hidden" name="author" value="<%= book.author %>">
+                  <input type="hidden" name="title" value="<%= book.title %>">
+                  <input type="hidden" name="isbn" value="<%= book.isbn %>">
+                  <input type="hidden" name="image_url" value="<%= book.image_url %>">
+                  <input type="hidden" name="description" value="<%= book.description %>">
+                  <div>
+                    <button class="detail_button" type="submit">Add to Favorites</button>
+                  </div>
+                </fieldset>
+              </form>
+            </article>  
+          <% }) %>
+        </ul>
+    </main>
+    <footer>
+      <%- include( '../../layout/footer.ejs' ) %>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include( '../layout/head.ejs' ) %>
+  </head>
+  <body>
+    <header>
+      <h1>Book App </h1>
+      <%- include( '../layout/header.ejs' ) %>
+    </header>
+    <main>
+      <div class="search" ><a href="/search">search for books</a></div>
+      <div><h3>Your Bookshelf</h3></div>
+      <ul>
+        <% bookList.forEach(book => { %>
+          <article class="book_list">
+            <img class="book_image" src=<%= book.image_url %> >
+            <h2 class="books"><%= book.title %></h2>
+            <h3 class="books"><%= book.author %></h3>
+            <div>
+              <button class="detail_button"><a href="/books/<%= book.id %>">View Details</button>
+            </div>
+          </article>
+        <% }) %>
+        </ul>
+    </main>
+    <footer>
+      <%- include( '../layout/footer.ejs' ) %>
+    </footer>
+  </body>
+</html>
